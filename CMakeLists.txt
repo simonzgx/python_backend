@@ -39,7 +39,7 @@ set(TRITON_MIN_CXX_STANDARD 17 CACHE STRING "The minimum C++ standard which feat
 #
 option(TRITON_ENABLE_GPU "Enable GPU support in backend" ON)
 option(TRITON_ENABLE_STATS "Include statistics collections in backend" ON)
-option(TRITON_ENABLE_NVTX "Include nvtx markers collection in backend." OFF)
+option(TRITON_ENABLE_NVTX "Include nvtx markers collection in backend." ON)
 
 # FIXME: CI needs to enable the GPU flag. Python for window currently does not
 # support GPU tensors. For simplicity, we will override this option here.
@@ -134,9 +134,9 @@ elseif()
   message(WARNING "TRITON_ENABLE_GPU is OFF, GPU Tensor support will be disabled")
 endif() # TRITON_ENABLE_GPU
 
-if(${TRITON_ENABLE_NVTX})
-  add_definitions(-DTRITON_ENABLE_NVTX=1)
-endif() # TRITON_ENABLE_NVTX
+#if(${TRITON_ENABLE_NVTX})
+add_definitions(-DTRITON_ENABLE_NVTX=1)
+#endif() # TRITON_ENABLE_NVTX
 
 find_package(ZLIB REQUIRED)
 
