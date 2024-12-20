@@ -113,8 +113,8 @@ FetchContent_MakeAvailable(dlpack)
 #
 ExternalProject_Add(
   boostorg
-  URL https://archives.boost.io/release/1.79.0/source/boost_1_79_0.tar.gz
-  URL_HASH SHA256=273f1be93238a068aba4f9735a4a2b003019af067b9c183ed227780b8f36062c
+  URL https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.gz
+  URL_HASH SHA256=c0685b68dd44cc46574cce86c4e17c0f611b15e195be9848dfd0769a0a207628
   PREFIX "boost-src"
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -E copy_directory
                     <SOURCE_DIR>/boost/ ${CMAKE_BINARY_DIR}/boost
