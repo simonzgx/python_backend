@@ -85,14 +85,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(repo-common repo-core repo-backend)
 
-FetchContent_Declare(
-  pybind11
-  GIT_REPOSITORY "https://github.com/pybind/pybind11"
-  # COMMIT ID for v2.10.0
-  GIT_TAG "aa304c9c7d725ffb9d10af08a3b34cb372307020"
-  GIT_SHALLOW ON
-)
-FetchContent_MakeAvailable(pybind11)
+find_package(pybind11 REQUIRED)
 
 #
 # DLPack
@@ -121,6 +114,7 @@ ExternalProject_Add(
   INSTALL_COMMAND ""
   BUILD_COMMAND ""
 )
+add_compile_definitions(BOOST_NO_CXX98_FUNCTION_BASE)
 set(boostorg_INCLUDE_DIRS "${CMAKE_BINARY_DIR}/boost/")
 
 #
