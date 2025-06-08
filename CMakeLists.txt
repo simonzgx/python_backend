@@ -101,7 +101,7 @@ if(LINUX)
   file(STRINGS "/etc/os-release" DISTRO_ID_LIKE REGEX "ID_LIKE")
   if(${DISTRO_ID_LIKE} MATCHES "rhel|centos")
     set(RHEL_BUILD ON)
-    set(PYBIND11_PYTHON_VERSION 3.12)
+    set(PYBIND11_PYTHON_VERSION 3.11)
   endif(${DISTRO_ID_LIKE} MATCHES "rhel|centos")
 endif(LINUX)
 FetchContent_MakeAvailable(pybind11)
@@ -133,6 +133,7 @@ ExternalProject_Add(
   INSTALL_COMMAND ""
   BUILD_COMMAND ""
 )
+add_compile_definitions(BOOST_NO_CXX98_FUNCTION_BASE)
 set(boostorg_INCLUDE_DIRS "${CMAKE_BINARY_DIR}/boost/")
 
 #
@@ -422,3 +423,4 @@ export(
 )
 
 export(PACKAGE TritonPythonBackend)
+
